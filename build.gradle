@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.13.3"
+    id("org.jetbrains.intellij") version "1.15.0"
 }
 
 group 'com.ADMARIl'
@@ -12,23 +12,11 @@ repositories {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version.set('IC-2023.1')
+    version.set('2023.1.4')
 }
 
 tasks {
-    patchPluginXml {
-        def changelogPath = "$projectDir/docs/CHANGELOG.html"
-
-        if (file(changelogPath).exists()) {
-            changeNotes.set(file(changelogPath).text)
-        }
-    }
-
-    publishPlugin {
-        token.set(intellijPublishToken)
-    }
-
     runPluginVerifier {
-        ideVersions.set(["IC-2023.1"])
+        ideVersions.set(["2023.1.4"])
     }
 }
